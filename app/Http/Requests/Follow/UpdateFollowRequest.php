@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests\Article;
+namespace App\Http\Requests\Follow;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateArticleRequest extends FormRequest
+class UpdateFollowRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,11 +22,7 @@ class UpdateArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'content' => 'required|string',
-            'image' => 'nullable|image',
-            'status' => 'required|in:draft,published',
+            //
         ];
     }
 }

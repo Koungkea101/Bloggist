@@ -3,12 +3,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: my-laravel-app
-    container_name: my-laravel-app
+    image: my-bloggist-app
+    container_name: my-bloggist-app
     restart: unless-stopped
     working_dir: /var/www
     volumes:
       - ./:/var/www
+      - /var/www/vendor
       - ./.env:/var/www/.env
     environment:
       - APP_ENV=local
@@ -17,7 +18,7 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: nginx-server
+    container_name: bloggist-nginx
     ports:
       - '8000:80'
     volumes:
@@ -32,8 +33,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.node
-    image: my-laravel-node
-    container_name: my-laravel-node
+    image: my-bloggist-node
+    container_name: my-bloggist-node
     ports:
       - '3000:3000'
     restart: unless-stopped
@@ -46,7 +47,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: my-mysql
+    container_name: my-bloggist-db
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ArticlesHostingSite
