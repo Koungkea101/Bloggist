@@ -12,14 +12,6 @@ class StoreFollowRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // // Check if the user is authenticated
-        // $validated['follower_id'] = auth()->id();
-        // if ($validated['follower_id']) {
-        //     return true;
-        // } else {
-        //     // If not authenticated, return false
-        //     return false;
-        // }
 
         return true;
     }

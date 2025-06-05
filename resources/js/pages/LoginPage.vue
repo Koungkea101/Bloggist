@@ -536,5 +536,28 @@
       errorMessage.value = 'An error occurred while logging in. Please try again.';
     }
 
+
+      //make a post request to the backend to login
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        successMessage.value = "Login successful!";
+        // console.log("User data:", data.user);
+      } else {
+        errorMessage.value = data.message || "Failed to login. Please check your credentials.";
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      errorMessage.value = 'An error occurred while logging in. Please try again.';
+    }
+
   };
 </script>
